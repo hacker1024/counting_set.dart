@@ -6,22 +6,26 @@ void main() {
     test('Creating an empty set', () {
       final set = CountingHashSet();
       expect(set, isEmpty);
+      expect(set.counts, equals(const {}));
     });
     test('Creating a set with .of', () {
       final set = CountingHashSet.of(const [1, 1, 2, 3, 4, 5]);
       expect(set, isNotEmpty);
       expect(set, containsAll(const [1, 2, 3, 4, 5]));
+      expect(set.counts, equals(const {1: 2, 2: 1, 3: 1, 4: 1, 5: 1}));
     });
     test('Creating a set with addAll', () {
       final set = CountingHashSet()..addAll(const [1, 1, 2, 3, 4, 5]);
       expect(set, isNotEmpty);
       expect(set, containsAll(const [1, 2, 3, 4, 5]));
+      expect(set.counts, equals(const {1: 2, 2: 1, 3: 1, 4: 1, 5: 1}));
     });
     test('Creating a set with a for loop', () {
       final set = CountingHashSet();
       const [1, 1, 2, 3, 4, 5].forEach(set.add);
       expect(set, isNotEmpty);
       expect(set, containsAll(const [1, 2, 3, 4, 5]));
+      expect(set.counts, equals(const {1: 2, 2: 1, 3: 1, 4: 1, 5: 1}));
     });
   });
   group('Equality', () {
@@ -31,6 +35,7 @@ void main() {
       final map = CountingHashSet<int>()..addAll(items);
       expect(map, hasLength(1));
       expect(map, containsAll(const [0]));
+      expect(map, equals(const {0: 1}));
     });
     test('Custom equality', () {
       // Test with custom equality where objects are never equal
@@ -76,6 +81,7 @@ void main() {
       expect(set, contains(const Object()));
       expect(set, contains(existingObject));
       expect(set, isNot(contains(Object())));
+      expect(set.counts.values, containsAll(const [2, 1, 1, 1]));
     });
   });
   group('Mutation', () {
