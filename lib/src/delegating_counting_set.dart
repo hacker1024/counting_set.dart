@@ -1,6 +1,7 @@
 import 'dart:collection';
 
-import 'package:counting_set/counting_set.dart';
+import 'package:counting_set/src/counting_set.dart';
+import 'package:counting_set/src/empty_immutable_counting_set.dart';
 import 'package:meta/meta.dart';
 
 /// A [CountingSet] implementation that uses another [Set] for storage.
@@ -23,6 +24,8 @@ abstract class DelegatingCountingSet<E> extends CountingSet<E>
   DelegatingCountingSet.identity(Set<E> inner)
       : _inner = inner,
         _counts = HashMap.identity();
+
+  const factory DelegatingCountingSet.immutable() = EmptyImmutableCountingSet;
 
   @override
   Map<E, int> get counts => UnmodifiableMapView(_counts);

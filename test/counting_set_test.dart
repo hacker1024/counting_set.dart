@@ -1,4 +1,6 @@
-import 'package:counting_set/counting_set.dart';
+import 'package:counting_set/src/counting_hash_set.dart';
+import 'package:counting_set/src/counting_set.dart';
+import 'package:counting_set/src/delegating_counting_set.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -111,6 +113,29 @@ void main() {
           ..clear();
         expect(set, isEmpty);
       }
+    });
+  });
+  group('Immutability', () {
+    void testImmutability(CountingSet set) {
+      expect(() => set.addCounts(const {}), throwsUnsupportedError);
+      expect(() => set.add(null), throwsUnsupportedError);
+      expect(() => set.addAll(const []), throwsUnsupportedError);
+      expect(() => set.remove(null), throwsUnsupportedError);
+      expect(() => set.removeAll(const []), throwsUnsupportedError);
+      expect(() => set.retainAll(const []), throwsUnsupportedError);
+      expect(() => set.removeWhere((_) => false), throwsUnsupportedError);
+      expect(() => set.retainWhere((_) => false), throwsUnsupportedError);
+      expect(() => set.clear(), throwsUnsupportedError);
+    }
+
+    test('CountingSet.immutable() is immutable', () {
+      testImmutability(const CountingSet.immutable());
+    });
+    test('DelegatingCountingSet.immutable() is immutable', () {
+      testImmutability(const DelegatingCountingSet.immutable());
+    });
+    test('CountingHashSet.immutable() is immutable', () {
+      testImmutability(const CountingHashSet.immutable());
     });
   });
 }
