@@ -27,6 +27,12 @@ void main() {
       expect(set, containsAll(const [1, 2, 3, 4, 5]));
       expect(set.counts, equals(const {1: 2, 2: 1, 3: 1, 4: 1, 5: 1}));
     });
+    test('Creating a set with existing count values', () {
+      const counts = {1: 6, 2: 7, 3: 8, 4: 9, 5: 10};
+      final set = CountingHashSet()..addCounts(counts);
+      expect(set, isNotEmpty);
+      expect(set.counts, equals(counts));
+    });
   });
   group('Equality', () {
     test('Regular equality', () {

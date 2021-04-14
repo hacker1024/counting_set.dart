@@ -54,6 +54,15 @@ class CountingHashSet<E> with SetMixin<E> implements Set<E> {
     return _inner.add(value);
   }
 
+  /// Adds the given values with counts.
+  ///
+  /// For example, `addCounts({'example': 2})` would add 'example' to the set
+  /// and require it to be removed twice to actually be removed from the set.
+  void addCounts(Map<E, int> counts) {
+    _counts.addAll(counts);
+    _inner.addAll(counts.keys);
+  }
+
   /// Removes [value] from the set.
   ///
   /// Returns `true` if [value] was in the set, and `false` if not.
