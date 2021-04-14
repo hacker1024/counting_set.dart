@@ -41,7 +41,7 @@ void main() {
       final map = CountingHashSet<int>()..addAll(items);
       expect(map, hasLength(1));
       expect(map, containsAll(const [0]));
-      expect(map, equals(const {0: 1}));
+      expect(map.counts, equals(const {0: 7}));
     });
     test('Custom equality', () {
       // Test with custom equality where objects are never equal
