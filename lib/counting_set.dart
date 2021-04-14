@@ -11,7 +11,7 @@ class CountingHashSet<E> with SetMixin<E> implements Set<E> {
   final HashSet<E> _inner;
   final HashMap<E, int> _counts;
 
-  /// Equivalent to [HashSet]'s main constructor
+  /// Equivalent to [HashSet]'s main constructor.
   CountingHashSet({
     bool Function(E, E)? equals,
     int Function(E)? hashCode,
@@ -26,12 +26,12 @@ class CountingHashSet<E> with SetMixin<E> implements Set<E> {
           hashCode: hashCode,
         );
 
-  /// Equivalent to [HashSet.identity]
+  /// Equivalent to [HashSet.identity].
   CountingHashSet.identity()
       : _inner = HashSet.identity(),
         _counts = HashMap.identity();
 
-  /// Equivalent to [HashSet.of]
+  /// Equivalent to [HashSet.of].
   factory CountingHashSet.of(Iterable<E> elements) =>
       CountingHashSet()..addAll(elements);
 
