@@ -1,6 +1,6 @@
 name: counting_set
 description: A package providing a set that requires an element to be removed as many times as it was added.
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/hacker1024/counting_set.dart
 
 environment:
