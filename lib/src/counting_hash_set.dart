@@ -28,5 +28,5 @@ class CountingHashSet<E> extends DelegatingCountingSet<E> {
       CountingHashSet()..addAll(elements);
 
   /// An empty, immutable [CountingHashSet].
-  const factory CountingHashSet.immutable() = EmptyImmutableCountingSet;
+  const factory CountingHashSet.immutable() = EmptyImmutableCountingSet<E>;
 }

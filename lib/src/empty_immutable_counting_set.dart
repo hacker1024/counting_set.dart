@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 
 /// A mixin to add to a [CountingSet] implementation to make it immutable and
 /// empty.
-mixin EmptyImmutableCountingSetMixin<E> on CountingSet<E> {
+mixin _EmptyImmutableCountingSetMixin<E> on CountingSet<E> {
   @override
   bool contains(Object? element) => false;
 
@@ -80,5 +80,5 @@ mixin EmptyImmutableCountingSetMixin<E> on CountingSet<E> {
 /// [CountingHashSet] implementation.
 @internal
 class EmptyImmutableCountingSet<E> = CountingSet<E>
-    with SetMixin<E>, EmptyImmutableCountingSetMixin<E>
+    with SetMixin<E>, _EmptyImmutableCountingSetMixin<E>
     implements DelegatingCountingSet<E>, CountingHashSet<E>;

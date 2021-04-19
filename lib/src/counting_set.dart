@@ -9,7 +9,7 @@ abstract class CountingSet<E> implements Set<E> {
   const CountingSet();
 
   /// An empty, immutable [CountingSet].
-  const factory CountingSet.immutable() = EmptyImmutableCountingSet;
+  const factory CountingSet.immutable() = EmptyImmutableCountingSet<E>;
 
   /// Values in the set, mapped to the number of times they've been added.
   ///

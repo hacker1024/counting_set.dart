@@ -25,7 +25,8 @@ abstract class DelegatingCountingSet<E> extends CountingSet<E>
       : _inner = inner,
         _counts = HashMap.identity();
 
-  const factory DelegatingCountingSet.immutable() = EmptyImmutableCountingSet;
+  const factory DelegatingCountingSet.immutable() =
+      EmptyImmutableCountingSet<E>;
 
   @override
   Map<E, int> get counts => UnmodifiableMapView(_counts);
