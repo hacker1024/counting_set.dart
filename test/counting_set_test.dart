@@ -116,7 +116,7 @@ void main() {
     });
   });
   group('Immutability', () {
-    void testImmutability(CountingSet set) {
+    void testImmutability<T>(CountingSet<T?> set) {
       expect(() => set.addCounts(const {}), throwsUnsupportedError);
       expect(() => set.add(null), throwsUnsupportedError);
       expect(() => set.addAll(const []), throwsUnsupportedError);
